@@ -61,10 +61,9 @@ func (tb *TxBroadcaster) BroadcastToHeimdallWithDelay(msg sdk.Msg, delay time.Du
 	eta := time.Now().Add(delay)
 	timeAfterTrigger := time.After(delay)
 	tb.logger.Info("Tx sent on heimdall ", "msg", msg.Type(), "currentTime", time.Now(), "delayTime", eta)
-	select {
-	case <-timeAfterTrigger:
-		return tb.BroadcastToHeimdall(msg)
-	}
+
+	<-timeAfterTrigger
+	return tb.BroadcastToHeimdall(msg)
 }
 
 // BroadcastToHeimdall broadcast to heimdall

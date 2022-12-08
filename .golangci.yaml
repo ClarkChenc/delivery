@@ -1,0 +1,26 @@
+linters:
+  disable-all: true
+  enable:
+    - typecheck
+    - misspell
+    - govet
+    - ineffassign
+    - gosimple
+    - structcheck
+
+service:
+  golangci-lint-version: 1.41
+
+run:
+  skip-dirs:
+    - gov/simulation
+    - gov/client
+    - simulation
+
+  skip-files:
+    - _test.go
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: false

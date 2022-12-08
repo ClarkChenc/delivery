@@ -809,7 +809,7 @@ func (c *ContractCaller) GetTronTransactionReceipt(txID string) (*ethTypes.Recei
 		Method:         tron.GetTransactionByHash,
 		Params:         txIDs,
 	}
-	queryByte, err := json.Marshal(queryFilter)
+	queryByte, _ := json.Marshal(queryFilter)
 	req, err := http.NewRequest("POST", GetTronGridEndpoint("/jsonrpc"), bytes.NewBuffer(queryByte))
 	if err != nil {
 		return nil, err
@@ -908,7 +908,7 @@ func (c *ContractCaller) GetTronEventsByContractAddress(address []string, from, 
 		Params:         filtersArray,
 	}
 
-	queryByte, err := json.Marshal(queryFilter)
+	queryByte, _ := json.Marshal(queryFilter)
 	req, err := http.NewRequest("POST", GetTronGridEndpoint("/jsonrpc"), bytes.NewBuffer(queryByte))
 	if err != nil {
 		return nil, err
@@ -932,7 +932,7 @@ func (c *ContractCaller) GetTronLatestBlockNumber() (int64, error) {
 		Params:         empty,
 	}
 
-	queryByte, err := json.Marshal(queryFilter)
+	queryByte, _ := json.Marshal(queryFilter)
 	req, err := http.NewRequest("POST", GetTronGridEndpoint("/jsonrpc"), bytes.NewBuffer(queryByte))
 	if err != nil {
 		return 0, err

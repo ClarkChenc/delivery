@@ -37,17 +37,17 @@ type BaseQueryParam struct {
 }
 type FilterEventResponse struct {
 	BaseQueryParam
-	Result []types.Log `json:result`
+	Result []types.Log `json:"result"`
 }
 
 type FilterTxResponse struct {
 	BaseQueryParam
-	Result types.Receipt `json:result`
+	Result types.Receipt `json:"result"`
 }
 
 type FilterTxNumberResponse struct {
 	BaseQueryParam
-	Result string `json:result`
+	Result string `json:"result"`
 }
 
 func GetDefaultBaseParm() BaseQueryParam {

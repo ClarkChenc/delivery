@@ -7,6 +7,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	ethTypes "github.com/maticnetwork/bor/core/types"
+	cmTypes "github.com/maticnetwork/heimdall/chainmanager/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
 	"github.com/maticnetwork/heimdall/clerk/types"
@@ -106,7 +107,8 @@ func handleQueryRecordSequence(ctx sdk.Context, req abci.RequestQuery, keeper Ke
 		receipt, err = contractCallerObj.GetConfirmedTxReceipt(hmTypes.HexToHeimdallHash(params.TxHash).EthHash(),
 			chainParams.MainchainTxConfirmations, hmTypes.RootChainTypeEth)
 	case hmTypes.RootChainTypeBsc:
-		bscChain, err := keeper.chainKeeper.GetChainParams(ctx, hmTypes.RootChainTypeBsc)
+		var bscChain cmTypes.ChainInfo
+		bscChain, err = keeper.chainKeeper.GetChainParams(ctx, hmTypes.RootChainTypeBsc)
 		if err != nil {
 			return nil, sdk.ErrInternal(fmt.Sprintf("wrong chain type = " + params.RootChainType + "plealse pass correct chainType like bsc"))
 		}
@@ -118,7 +120,7 @@ func handleQueryRecordSequence(ctx sdk.Context, req abci.RequestQuery, keeper Ke
 		return nil, sdk.ErrInternal(fmt.Sprintf("wrong chain type = " + params.RootChainType + "please pass correct chainType like eth or tron"))
 	}
 	if err != nil || receipt == nil {
-		return nil, sdk.ErrInternal(fmt.Sprintf("Transaction is not confirmed yet. Please wait for sometime and try again"))
+		return nil, sdk.ErrInternal("Transaction is not confirmed yet. Please wait for sometime and try again")
 	}
 
 	// sequence id

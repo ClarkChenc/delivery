@@ -31,7 +31,7 @@ type AddRecordReq struct {
 	ContractAddress string             `json:"contract_address" yaml:"contract_address"`
 	BorChainID      string             `json:"bor_chain_id"`
 	Data            string             `json:"data"`
-	RootChainType   string             `json:"root_chain_type"" yaml:"root_chain_type"`
+	RootChainType   string             `json:"root_chain_type" yaml:"root_chain_type"`
 }
 
 func newEventRecordHandler(cliCtx context.CLIContext) http.HandlerFunc {

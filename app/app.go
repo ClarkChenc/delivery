@@ -182,7 +182,6 @@ func (d ModuleCommunicator) SendCoins(ctx sdk.Context, fromAddr types.HeimdallAd
 // Create ValidatorSigningInfo used by slashing module
 func (d ModuleCommunicator) CreateValiatorSigningInfo(ctx sdk.Context, valID types.ValidatorID, valSigningInfo types.ValidatorSigningInfo) {
 	d.App.SlashingKeeper.SetValidatorSigningInfo(ctx, valID, valSigningInfo)
-	return
 }
 
 //

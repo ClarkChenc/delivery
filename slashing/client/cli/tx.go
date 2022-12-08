@@ -113,7 +113,7 @@ func GetCmdTick(cdc *codec.Codec) *cobra.Command {
 				hmTypes.HexToHexBytes(slashInfoBytes),
 			)
 
-			// braodcast messages
+			// broadcast messages
 			return helper.BroadcastMsgsWithCLI(cliCtx, []sdk.Msg{msg})
 		},
 	}

@@ -88,7 +88,7 @@ func (p Params) String() string {
   SlashFractionDowntime:   %s
   SlashFractionLimit:   %s
   JailFractionDowntime:   %s
-  EnableSlashing:   %s`,
+  EnableSlashing:   %t`,
 		p.SignedBlocksWindow, p.MinSignedPerWindow,
 		p.DowntimeJailDuration, p.SlashFractionDoubleSign, p.MaxEvidenceAge,
 		p.SlashFractionDowntime, p.SlashFractionLimit, p.JailFractionLimit, p.EnableSlashing)
@@ -97,15 +97,15 @@ func (p Params) String() string {
 // ParamSetPairs - Implements params.ParamSet
 func (p *Params) ParamSetPairs() subspace.ParamSetPairs {
 	return subspace.ParamSetPairs{
-		{KeySignedBlocksWindow, &p.SignedBlocksWindow},
-		{KeyMinSignedPerWindow, &p.MinSignedPerWindow},
-		{KeyDowntimeJailDuration, &p.DowntimeJailDuration},
-		{KeySlashFractionDoubleSign, &p.SlashFractionDoubleSign},
-		{KeySlashFractionDowntime, &p.SlashFractionDowntime},
-		{KeySlashFractionLimit, &p.SlashFractionLimit},
-		{KeyJailFractionLimit, &p.JailFractionLimit},
-		{KeyMaxEvidenceAge, &p.MaxEvidenceAge},
-		{KeyEnableSlashing, &p.EnableSlashing},
+		{Key: KeySignedBlocksWindow, Value: &p.SignedBlocksWindow},
+		{Key: KeyMinSignedPerWindow, Value: &p.MinSignedPerWindow},
+		{Key: KeyDowntimeJailDuration, Value: &p.DowntimeJailDuration},
+		{Key: KeySlashFractionDoubleSign, Value: &p.SlashFractionDoubleSign},
+		{Key: KeySlashFractionDowntime, Value: &p.SlashFractionDowntime},
+		{Key: KeySlashFractionLimit, Value: &p.SlashFractionLimit},
+		{Key: KeyJailFractionLimit, Value: &p.JailFractionLimit},
+		{Key: KeyMaxEvidenceAge, Value: &p.MaxEvidenceAge},
+		{Key: KeyEnableSlashing, Value: &p.EnableSlashing},
 	}
 }
 

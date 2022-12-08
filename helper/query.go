@@ -251,7 +251,7 @@ func GetBlockWithClient(client *httpClient.HTTP, height int64) (*tmTypes.Block, 
 	for {
 		select {
 		case event := <-eventCh:
-			eventData := event.Data.(tmTypes.TMEventData)
+			eventData := event.Data
 			switch t := eventData.(type) {
 			case tmTypes.EventDataNewBlock:
 				if t.Block.Height == height {
@@ -295,7 +295,7 @@ func GetBeginBlockEvents(client *httpClient.HTTP, height int64) ([]abci.Event, e
 	for {
 		select {
 		case event := <-eventCh:
-			eventData := event.Data.(tmTypes.TMEventData)
+			eventData := event.Data
 			switch t := eventData.(type) {
 			case tmTypes.EventDataNewBlock:
 				if t.Block.Height == height {

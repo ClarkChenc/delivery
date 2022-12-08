@@ -408,7 +408,7 @@ func (sp *SlashingProcessor) isOldTx(cliCtx cliContext.CLIContext, txHash string
 	}
 
 	endpoint := helper.GetHeimdallServerEndpoint(util.SlashingTxStatusURL)
-	url, err := util.CreateURLWithQuery(endpoint, queryParam)
+	url, _ := util.CreateURLWithQuery(endpoint, queryParam)
 
 	res, err := helper.FetchFromAPI(sp.cliCtx, url)
 	if err != nil {

@@ -87,7 +87,7 @@ func SideHandleMsgNewChain(ctx sdk.Context, msg types.MsgNewChain, k Keeper, con
 		return common.ErrorSideTx(k.Codespace(), common.CodeInvalidMsg)
 	}
 
-	k.Logger(ctx).Debug("✅ Succesfully validated External call for new chain msg")
+	k.Logger(ctx).Debug("✅ Successfully validated External call for new chain msg")
 	result.Result = abci.SideTxResultType_Yes
 	return
 }

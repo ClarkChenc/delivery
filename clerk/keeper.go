@@ -375,7 +375,7 @@ func GetEventRecordKeyWithTimePrefix(recordTime time.Time) []byte {
 // GetRootChainEventRecordKeyWithTimePrefix gives prefix for record time key
 func GetRootChainEventRecordKeyWithTimePrefix(rootChainType string, id uint64, recordTime time.Time) []byte {
 
-	key := DefaultValue
+	var key []byte
 	switch rootChainType {
 	case hmTypes.RootChainTypeEth:
 		key = EthStateRecordPrefixKeyWithTime
