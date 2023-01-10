@@ -38,7 +38,9 @@ func (AppModuleBasic) ValidateGenesis(_ json.RawMessage) error { return nil }
 func (AppModuleBasic) VerifyGenesis(bz map[string]json.RawMessage) error { return nil }
 
 // RegisterRESTRoutes register rest routes
-func (AppModuleBasic) RegisterRESTRoutes(_ context.CLIContext, _ *mux.Router) {}
+func (AppModuleBasic) RegisterRESTRoutes(_ context.CLIContext, _ *mux.Router) {
+	return
+}
 
 // GetTxCmd get the root tx command of this module
 func (AppModuleBasic) GetTxCmd(_ *codec.Codec) *cobra.Command { return nil }
