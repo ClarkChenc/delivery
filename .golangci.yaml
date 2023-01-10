@@ -19,6 +19,9 @@ run:
 
   skip-files:
     - _test.go
+    
+issues:
+  new: true
 
 linters-settings:
   errcheck:
