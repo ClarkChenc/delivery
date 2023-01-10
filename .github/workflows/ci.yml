@@ -12,6 +12,14 @@ jobs:
           go-version: 1.16
       - name: "Build binaries"
         run: make build
+
+      - name: "Run lint"
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.41
+          args: --timeout=10m
+          only-new-issues: true
+
       - name: "Run tests"
         run: make tests
       - name: Upload coverage to Codecov
