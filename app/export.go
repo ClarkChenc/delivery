@@ -2,6 +2,7 @@ package app
 
 import (
 	"encoding/json"
+	"fmt"
 
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmTypes "github.com/tendermint/tendermint/types"
@@ -20,5 +21,9 @@ func (app *HeimdallApp) ExportAppStateAndValidators() (
 	// create app state
 	// appState, err = codec.MarshalJSONIndent(app.cdc, genState)
 	appState, err = json.Marshal(result)
+
+	if err != nil {
+		fmt.Println(err)
+	}
 	return appState, validators, err
 }
